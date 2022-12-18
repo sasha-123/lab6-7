@@ -1,0 +1,11 @@
+.PHONY: clean
+PassGen:main.o funcs.o MyClass.o
+	g++ -o PassGen main.o funcs.o MyClass.o
+main.o: main.cpp MyClass.cpp funcs.cpp
+	g++ -c main.cpp funcs.cpp MyClass.cpp
+MyClass.o:MyClass.cpp funcs.cpp
+	g++ -c funcs.cpp MyClass.cpp
+funcs.o:funcs.cpp
+	g++ -c funcs.cpp
+clean:
+	del /A : *.o
